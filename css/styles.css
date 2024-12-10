@@ -1,0 +1,410 @@
+/* =========================
+   RESET Y BASE
+   ========================= */
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =========================
+   MAPA
+   ========================= */
+#map {
+    height: 100vh;
+    width: 100%;
+}
+
+/* =========================
+   PANEL DE CONTROL (FILTROS)
+   ========================= */
+.map-control {
+    position: absolute;
+    top: 80px;
+    right: 10px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+    min-width: 200px;
+}
+
+.map-control h3 {
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.filter-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filter-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #666;
+}
+
+/* =========================
+   POPUPS PERSONALIZADOS
+   ========================= */
+.custom-popup {
+    padding: 15px;
+    max-width: 300px;
+    min-width: 250px;
+}
+
+.custom-popup h3 {
+    color: #2196F3;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #2196F3;
+    font-size: 16px;
+}
+
+.custom-popup p {
+    line-height: 1.5;
+    color: #666;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+/* Botones dentro de popups (si se utilizan) */
+.popup-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.popup-buttons button {
+    background: #2196F3;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background 0.3s ease;
+}
+
+.popup-buttons button:hover {
+    background: #1976D2;
+}
+
+/* Imágenes en popups */
+.popup-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+/* =========================
+   LEYENDA
+   ========================= */
+.legend {
+    padding: 10px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.legend h4 {
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 14px;
+}
+
+.legend i {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    float: left;
+    opacity: 0.7;
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+@media (max-width: 768px) {
+    .map-control {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        max-width: none;
+    }
+}
+
+/* =========================
+   PANEL DE RUTAS (LEAFLET ROUTING MACHINE)
+   ========================= */
+.leaflet-routing-container {
+    position: absolute !important;
+    bottom: 20px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    top: auto !important;
+    right: auto !important;
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.15);
+    width: 90%;
+    max-width: 400px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.leaflet-routing-container h2 {
+    font-size: 16px;
+    margin: 0 0 10px 0;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #2196F3;
+    color: #2196F3;
+}
+
+.leaflet-routing-alt {
+    max-height: none !important;
+    border-bottom: none !important;
+    padding: 0 !important;
+}
+
+/* Botón para cerrar el panel de rutas */
+.leaflet-routing-collapse-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #f5f5f5;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Responsive para el panel de rutas */
+@media (max-width: 768px) {
+    .leaflet-routing-container {
+        width: 95%;
+        max-width: none;
+        bottom: 10px !important;
+        max-height: 180px;
+    }
+}
+
+/* Scroll personalizado en panel de rutas */
+.leaflet-routing-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.leaflet-routing-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.leaflet-routing-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+.leaflet-routing-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* =========================
+   MARCADORES PERSONALIZADOS
+   ========================= */
+.custom-marker i {
+    font-size: 32px !important;
+    filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.5));
+}
+
+/* =========================
+   RUTAS DE EMERGENCIA
+   ========================= */
+.ruta-emergencia {
+    animation: parpadeo 2s infinite;
+}
+
+@keyframes parpadeo {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Puntos seguros */
+.punto-seguro-icon {
+    font-size: 24px;
+    text-align: center;
+}
+
+.punto-seguro-popup {
+    min-width: 250px;
+    padding: 10px;
+}
+
+.punto-seguro-popup h3 {
+    color: #2196F3;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #2196F3;
+    padding-bottom: 5px;
+}
+
+/* Recursos disponibles en puntos seguros */
+.recursos-disponibles {
+    margin: 10px 0;
+    padding: 10px;
+    background: #f5f5f5;
+    border-radius: 4px;
+}
+
+.recursos-disponibles ul {
+    list-style: none;
+    padding-left: 10px;
+}
+
+.recursos-disponibles li {
+    margin: 5px 0;
+}
+
+/* Estado de servicios */
+.estado-servicios {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.servicio {
+    padding: 5px;
+    border-radius: 3px;
+    text-align: center;
+    font-size: 0.9em;
+    color: #fff;
+}
+
+.servicio.activo {
+    background: #4CAF50;
+}
+
+.servicio.inactivo {
+    background: #f44336;
+}
+
+/* =========================
+   PANEL DE CONTROL DE EMERGENCIAS
+   ========================= */
+.panel-emergencias {
+    position: absolute;
+    top: 280px;
+    right: 10px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+    transition: max-height 0.3s ease;
+}
+
+.panel-emergencias h3 {
+    margin: 0;
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.panel-emergencias .contenido-emergencias {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.panel-emergencias:hover .contenido-emergencias {
+    max-height: 300px;
+}
+
+.boton-emergencia {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.boton-emergencia:hover {
+    transform: scale(1.05);
+}
+
+/* Añadir retrasos en la animación para cada botón al hacer hover */
+.panel-emergencias:hover .boton-emergencia:nth-child(1) { transition-delay: 0.1s; }
+.panel-emergencias:hover .boton-emergencia:nth-child(2) { transition-delay: 0.2s; }
+.panel-emergencias:hover .boton-emergencia:nth-child(3) { transition-delay: 0.3s; }
+.panel-emergencias:hover .boton-emergencia:nth-child(4) { transition-delay: 0.4s; }
+
+/* =========================
+   ETIQUETAS DE ZONA DE RIESGO
+   ========================= */
+.etiqueta-riesgo {
+    background: transparent;
+    border: none;
+}
+
+.etiqueta-riesgo div {
+    font-size: 12px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    border: 1px solid rgba(0,0,0,0.1);
+    background: #fff;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+/* =========================
+   INFORMACIÓN DE LA RUTA
+   ========================= */
+.ruta-info {
+    padding: 10px;
+    max-width: 250px;
+}
+
+.ruta-info h3 {
+    color: #2196F3;
+    margin-bottom: 8px;
+    border-bottom: 2px solid #2196F3;
+    padding-bottom: 5px;
+}
+
+.ruta-info p {
+    margin: 5px 0;
+    line-height: 1.4;
+}
+
+/* =========================
+   CONTROL DE EMERGENCIAS
+   ========================= */
+.emergencias-control {
+    background: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+}
+
+.emergencias-panel button {
+    display: block;
+    margin: 5px 0;
+    padding: 5px 10px;
+    width: 100%;
+}
